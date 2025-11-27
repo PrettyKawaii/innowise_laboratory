@@ -1,12 +1,13 @@
 """
 Student Grade Analyzer
-Program to manage and analyze student grades with features:
+Program that can store students and their grades and calculate average scores:
 1) Add new students
 2) Add grades for students
 3) Generate full reports with statistics
 4) Find top performers
 
-Goal: demonstrate knowledge of collections, functions, error handling and loops
+Goal: demonstrate knowledge of collections, functions, error handling and loops.
+28/XI/2025 - tg: @PrettyKawaii
 """
 
 students = []
