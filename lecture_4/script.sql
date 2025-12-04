@@ -1,3 +1,5 @@
+-- @PrettyKawaii
+-- Simple SQL script to test the work with databases
 -- Create tables
 CREATE TABLE students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -54,33 +56,33 @@ INSERT INTO grades (student_id, subject, grade) VALUES
 (9, 'Math', 89),
 (9, 'Art', 92);
 
--- Required queries
+-- Homework queries
 
--- 1. All grades for Alice Johnson
+-- 1) All grades for Alice Johnson
 SELECT s.full_name, g.subject, g.grade
 FROM students s
 JOIN grades g ON s.id = g.student_id
 WHERE s.full_name = 'Alice Johnson';
 
--- 2. Average grade per student
+-- 2) Average grade per student
 SELECT s.full_name, AVG(g.grade) as avg_grade
 FROM students s
 JOIN grades g ON s.id = g.student_id
 GROUP BY s.id
 ORDER BY avg_grade DESC;
 
--- 3. Students born after 2004
+-- 3) Students born after 2004
 SELECT full_name, birth_year
 FROM students
 WHERE birth_year > 2004;
 
--- 4. Average grade per subject
+-- 4) Average grade per subject
 SELECT subject, AVG(grade) as avg_grade
 FROM grades
 GROUP BY subject
 ORDER BY avg_grade DESC;
 
--- 5. Top 3 students by average grade
+-- 5) Top 3 students by average grade
 SELECT s.full_name, AVG(g.grade) as avg_grade
 FROM students s
 JOIN grades g ON s.id = g.student_id
@@ -88,8 +90,14 @@ GROUP BY s.id
 ORDER BY avg_grade DESC
 LIMIT 3;
 
--- 6. Students with any grade below 80
+-- 6) Students with any grade below 80
 SELECT DISTINCT s.full_name
 FROM students s
 JOIN grades g ON s.id = g.student_id
 WHERE g.grade < 80;
+
+-- Additional: Create indexes (i.e. optimization)
+CREATE INDEX idx_grades_student_id ON grades(student_id);
+CREATE INDEX idx_students_birth_year ON students(birth_year);
+CREATE INDEX idx_grades_grade ON grades(grade);
+CREATE INDEX idx_grades_subject ON grades(subject);
