@@ -1,17 +1,8 @@
 # Book Collection API (Dockerized)
 
-A FastAPI application for managing a book collection, now containerized with Docker.
+## Setup
 
-## Features
-- Add, view, update, and delete books
-- Search books by title, author, or year
-- SQLite database with SQLAlchemy ORM
-- Health check endpoint (`/healthcheck`)
-- Fully Dockerized deployment
-
-## Quick Start
-
-### **Option 1: Docker (Recommended)**
+### **Option 1: via Docker (Recommended)**
 ```bash
 # Build the Docker image
 docker build . -t book-api:latest
@@ -27,21 +18,26 @@ curl http://localhost:8000/healthcheck
 ### Option 2: Traditional Setup
 ```bash
 
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Initialize database (creates books.db)
-python -c "from models import Base, engine; Base.metadata.create_all(bind=engine)"
-
-# 3. Run the application
-uvicorn main:app --reload
+1. pip install -r requirements.txt
+2. Run: uvicorn main:app --reload
+3. Open: http://127.0.0.1:8000/healthcheck
 ```
 
-Project Structure:
+## Project Structure:
 lecture_6/
 ├── Dockerfile         
 ├── main.py            
 ├── models.py          
 ├── requirements.txt   
 ├── README.md          
-└── books.db           
+└── books.db    
+
+## Features
+- Add, view, update, delete books
+- Search by title/author/year
+- SQLite database
+- FastAPI with SQLAlchemy ORM
+- Health check endpoint (`/healthcheck`)
+- Fully Dockerized deployment
+
+       
