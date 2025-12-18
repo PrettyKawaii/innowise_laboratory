@@ -4,6 +4,11 @@ from models import Book, get_db
 
 app = FastAPI()
 
+# Modifying lecture_5 main.py: adding healthcheck endpoint 
+@app.get("/healthcheck")
+async def healthcheck() -> dict:
+    """Health check endpoint."""
+    return {"status": "ok"}
 
 @app.post("/books/")
 def add_book(book: dict, db: Session = Depends(get_db)):
