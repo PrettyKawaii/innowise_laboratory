@@ -11,7 +11,7 @@ docker build . -t book-api:latest
 docker run -d -p 8000:8000 --name book-api-container book-api:latest
 
 # Check if it's running
-curl http://localhost:8000/healthcheck
+curl http://localhost:8000/healthcheck # (On Windows use cmd, PowerShell doesn't handle it) or simply open it in the browser
 # Should return: {"status":"ok"}
 ```
 
@@ -24,7 +24,7 @@ curl http://localhost:8000/healthcheck
 ```
 
 ## Project Structure:
-lecture_6/
+lecture_6/\
 ├── Dockerfile         
 ├── main.py            
 ├── models.py          
